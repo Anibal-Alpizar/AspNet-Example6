@@ -46,7 +46,22 @@ namespace Infraestructure.Repository
             Usuario oUsuario = null;
             try
             {
-
+                using(MyContext ctx = new MyContext())
+                {
+                    ctx.Configuration.LazyLoadingEnabled = false;
+                    oUsuario = GetUsuarioByID(usuario.IdUsuario);
+                    if (oUsuario == null)
+                    {
+                        ctx.Usuario.Add(usuario);
+                    }
+                    else
+                    {
+                        ctx.Entry(usuario).State = EntityState.Modified;
+                    }
+                    retorno = ctx.SaveChanges();
+                }
+                if (retorno >= 0) oUsuario = GetUsuarioByID(usuario.IdUsuario);
+                return oUsuario;
             }
             catch (Exception)
             {
