@@ -69,6 +69,7 @@ namespace Infraestructure.Repository
             }
         }
 
+
         public Usuario GetUsuario(string email, string password)
         {
             Usuario oUsuario = null;
