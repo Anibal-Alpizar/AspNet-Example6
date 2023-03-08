@@ -42,7 +42,16 @@ namespace Infraestructure.Repository
         }
         public Usuario Save(Usuario usuario)
         {
-            throw new NotImplementedException();
+            int retorno = 0;
+            Usuario oUsuario = null;
+            try
+            {
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         public Usuario GetUsuario(string email, string password)
